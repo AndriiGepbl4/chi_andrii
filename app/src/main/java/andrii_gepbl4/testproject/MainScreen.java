@@ -15,6 +15,7 @@ public class MainScreen extends AppCompatActivity {
 
     SharedPreferences sPref;
     final String PREV_DATA = "previous_data";
+    final String LIST_DATA = "list_of_data";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,17 @@ public class MainScreen extends AppCompatActivity {
         return "" + hour + ":" + minute + ":" + second;
     }
 
+    private String listOfTime(){
+        String timeList = "";
+
+        return timeList;
+    }
+
     void saveText() {
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
         ed.putString(PREV_DATA, getTime());
+        ed.putString(LIST_DATA, loadText() + "/n" + getTime()  );
         ed.commit();
     }
 

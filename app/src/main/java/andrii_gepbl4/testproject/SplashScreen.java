@@ -28,8 +28,6 @@ public class SplashScreen extends AppCompatActivity {
 
         MyThread myThread = new MyThread();
         myThread.execute();
-
-//        wait(2000);
     }
 
     private class MyThread extends AsyncTask<Void, Void, Void> {
@@ -56,7 +54,6 @@ public class SplashScreen extends AppCompatActivity {
 
             Intent intent = new Intent(SplashScreen.this, MainScreen.class);
             startActivity(intent);
-
         }
     }
 }

@@ -1,9 +1,13 @@
 package andrii_gepbl4.testproject;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import java.util.concurrent.TimeUnit;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -22,17 +26,40 @@ public class SplashScreen extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        ivCat.setBackgroundResource(R.drawable.cat);
-        wait(5500);
+        MyThread myThread = new MyThread();
+        myThread.execute();
+
+//        wait(2000);
     }
 
-    private void wait(int waitTime){
-        try {
-            Thread.sleep(waitTime);
-            Intent intent = new Intent(this, MainScreen.class);
+    private class MyThread extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            ivCat.setBackgroundResource(R.drawable.cat);
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Thread.sleep(5500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+
+            Intent intent = new Intent(SplashScreen.this, MainScreen.class);
             startActivity(intent);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
         }
     }
 }
+
+
+

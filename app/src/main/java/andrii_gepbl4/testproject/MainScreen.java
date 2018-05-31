@@ -28,8 +28,8 @@ public class MainScreen extends AppCompatActivity {
     }
 
     private void setViews(){
-        tvPreviousStart.setText("I've got it from shared preference " + loadText());
-        tvThisStart.setText("this time app started at " + getTime());
+        tvPreviousStart.setText(loadText());
+        tvThisStart.setText(getTime());
         saveText();
     }
 
@@ -45,7 +45,7 @@ public class MainScreen extends AppCompatActivity {
     void saveText() {
         sPref = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
-        ed.putString(PREV_DATA, tvThisStart.getText().toString());
+        ed.putString(PREV_DATA, getTime());
         ed.commit();
     }
 

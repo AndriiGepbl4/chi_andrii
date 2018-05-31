@@ -54,7 +54,7 @@ public class MainScreen extends AppCompatActivity {
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
 
-        return "" + hour + ":" + minute + ":" + second;
+        return "" + hour + " : " + minute + " : " + second;
     }
 
     private String listOfTime(){
@@ -77,6 +77,4 @@ public class MainScreen extends AppCompatActivity {
 
         return savedText;
     }
-
-
 }

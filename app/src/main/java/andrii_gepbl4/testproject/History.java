@@ -19,7 +19,6 @@ public class History extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             post = extras.getString("list_data");
-            //The key argument here must match that used in the other activity
         }
 
         tvDateList.setText(post);
